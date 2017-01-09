@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<input type="text" id="send">
+<button onclick="sendHandle()">发送</button>
+<div id="message"></div>
+<body>
+    <script>
+        var ws = new WebSocket("ws://115.29.193.48:8088");
+        ws.onopen = function(e){
+            console.log(e);
+            console.log('connect successful!');
+        }
+        ws.onerror = function(e){
+            console.log(e);
+        };
+        ws.onclose = function(e){
+            console.log(e.code);
+            console.log(e.reason);
+        }  
+        ws.onmessage = function(e){
+            console.log(e.data);
+            document.getElementById('message').innerHTML = e.data;
+        }
+        function sendHandle(){
+            var send = document.getElementById('send').value;
+            if(ws.readyState == WebSocket.OPEN){
+                ws.send(send);
+            }
+        }
+    </script>
+</body>
+</html>

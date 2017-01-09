@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket</title>
+</head>
+<body>
+    <div>
+        <h1>Drop image here:</h1>
+        <!--<button onclick="send()">Send Message</button>-->
+    </div>
+</body>
+<script>
+    //初始化webSocket
+    var wsUrl = 'ws://echo.websocket.org/echo';
+    var ws = new WebSocket(wsUrl);
+    //监测打开事件
+    ws.onopen =  function(){
+        console.log("open :"+ wsUrl);
+    }
+    ws.onmessage = function(e){
+        var blob = e.data;
+        console.log('message:' + blob.size+'bytes');
+        if(window.webkitURL){
+            URL = webkitURL;
+        }
+        var uri = URL.createObjectURL(blob);
+        var img = document.createElement('img');
+        img.src = uri;
+        document.body.appendChild(img);
+        // document.write(e.data);
+    }
+    function send(){
+        if(ws.readyState == WebSocket.OPEN){
+            ws.send('Test WebSocket!');
+        }else{
+            alter('ws 还未准备好!');
+        }
+    }
+    //鼠标拖拽响应事件
+    document.ondrag = function(e){
+        document.body.style.backgroundColor = "#fff";
+        try{
+            e.preventDefault();
+            handleFiledrop(e.dataTransfer.files[0]);
+            return false;
+        }catch(error){
+            console.log(error.err);
+        }
+    }
+    //拖拽的悬浮事件,将背景改为亮绿色
+    document.ondragover = function(e){
+        e.preventDefault();
+        document.body.style.backgroundColor = "#6fff41";
+    }
+    //拖拽的离开时间，恢复白色背景
+    document.ondragleave = function(e){
+        document.body.style.backgroundColor = "#fff";
+    }
+    //文件句柄
+    function handleFiledrop(file){
+        var img = new FileReader();
+        img.readAsArrayBuffer(file);
+        img.onload = function(){
+            console.log('send '+ img.name);
+            ws.send(img.result);
+        }
+    }
+</script>
+</html>
