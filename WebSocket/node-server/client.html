@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script src="socket.io/socket.io.js"></script>
+<script>
+  var socket = io('ws://localhost:8888');
+  socket.on('news', function (data) {
+    var p = document.createElement("p");
+    p.innerHTML = data.id;
+    var div = document.getElementById('message');
+    div.innerHTML = data.id;
+    // console.log(data);
+    // socket.emit('my_other_event', { my: 'data' });
+  });
+</script>
+<div id="message"></div>
+</body>
+</html>
