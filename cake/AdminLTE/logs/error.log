@@ -3563,3 +3563,263 @@ Stack Trace:
 #13 {main}
 
 
+2017-01-23 11:02:18 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Dist could not be found.
+Request URL: /dist/img/user2-160x160.jpg
+Referer URL: http://localhost:8765/
+Stack Trace:
+#0 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ControllerFactory.php(72): Cake\Http\ControllerFactory->missingController(Object(Cake\Network\Request))
+#1 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(92): Cake\Http\ControllerFactory->create(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#2 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#4 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(62): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#5 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(81): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Server.php(90): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#12 F:\libing\codingCat\cake\AdminLTE\webroot\index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-01-23 11:02:22 Error: [Cake\Controller\Exception\MissingActionException] Action UsersController::dist() could not be found, or is not accessible.
+Request URL: /users/dist/img/user2-160x160.jpg
+Referer URL: http://localhost:8765/users/profile
+Stack Trace:
+#0 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(121): Cake\Controller\Controller->invokeAction()
+#1 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(95): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#2 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#4 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(62): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#5 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(81): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Server.php(90): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#12 F:\libing\codingCat\cake\AdminLTE\webroot\index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-01-24 01:32:01 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Dist could not be found.
+Request URL: /dist/img/user2-160x160.jpg
+Referer URL: http://localhost:8765/
+Stack Trace:
+#0 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ControllerFactory.php(72): Cake\Http\ControllerFactory->missingController(Object(Cake\Network\Request))
+#1 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(92): Cake\Http\ControllerFactory->create(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#2 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#4 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(62): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#5 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(81): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Server.php(90): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#12 F:\libing\codingCat\cake\AdminLTE\webroot\index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-01-24 01:32:05 Error: [Cake\Routing\Exception\MissingControllerException] Controller class AdminLTE could not be found.
+Request URL: /adminLTE/plugins/iCheck/all.css.js
+Referer URL: http://localhost:8765/users/profile
+Stack Trace:
+#0 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ControllerFactory.php(72): Cake\Http\ControllerFactory->missingController(Object(Cake\Network\Request))
+#1 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(92): Cake\Http\ControllerFactory->create(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#2 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#4 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(62): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#5 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(81): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Server.php(90): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#12 F:\libing\codingCat\cake\AdminLTE\webroot\index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-01-24 01:32:06 Error: [Cake\Controller\Exception\MissingActionException] Action UsersController::dist() could not be found, or is not accessible.
+Request URL: /users/dist/img/user2-160x160.jpg
+Referer URL: http://localhost:8765/users/profile
+Stack Trace:
+#0 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(121): Cake\Controller\Controller->invokeAction()
+#1 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(95): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#2 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#4 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(62): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#5 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(81): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Server.php(90): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#12 F:\libing\codingCat\cake\AdminLTE\webroot\index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-01-24 01:32:53 Error: [Cake\Controller\Exception\MissingActionException] Action UsersController::dist() could not be found, or is not accessible.
+Request URL: /users/dist/img/user2-160x160.jpg
+Referer URL: http://localhost:8765/users/profile
+Stack Trace:
+#0 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(121): Cake\Controller\Controller->invokeAction()
+#1 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(95): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#2 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#4 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(62): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#5 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(81): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Server.php(90): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#12 F:\libing\codingCat\cake\AdminLTE\webroot\index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-01-24 01:33:20 Error: [Cake\Controller\Exception\MissingActionException] Action UsersController::dist() could not be found, or is not accessible.
+Request URL: /users/dist/img/user2-160x160.jpg
+Referer URL: http://localhost:8765/users/profile
+Stack Trace:
+#0 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(121): Cake\Controller\Controller->invokeAction()
+#1 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(95): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#2 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#4 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(62): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#5 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(81): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Server.php(90): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#12 F:\libing\codingCat\cake\AdminLTE\webroot\index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-01-24 01:33:52 Error: [Cake\Controller\Exception\MissingActionException] Action UsersController::dist() could not be found, or is not accessible.
+Request URL: /users/dist/img/user2-160x160.jpg
+Referer URL: http://localhost:8765/users/profile
+Stack Trace:
+#0 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(121): Cake\Controller\Controller->invokeAction()
+#1 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(95): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#2 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#4 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(62): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#5 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(81): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Server.php(90): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#12 F:\libing\codingCat\cake\AdminLTE\webroot\index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-01-24 01:53:34 Error: [Cake\Controller\Exception\MissingActionException] Action UsersController::dist() could not be found, or is not accessible.
+Request URL: /users/dist/img/user2-160x160.jpg
+Referer URL: http://localhost:8765/users/profile
+Stack Trace:
+#0 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(121): Cake\Controller\Controller->invokeAction()
+#1 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(95): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#2 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#4 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(62): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#5 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(81): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Server.php(90): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#12 F:\libing\codingCat\cake\AdminLTE\webroot\index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-01-24 01:55:41 Error: [Cake\Controller\Exception\MissingActionException] Action UsersController::dist() could not be found, or is not accessible.
+Request URL: /users/dist/img/user2-160x160.jpg
+Referer URL: http://localhost:8765/users/profile
+Stack Trace:
+#0 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(121): Cake\Controller\Controller->invokeAction()
+#1 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(95): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#2 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#4 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(62): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#5 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(81): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Server.php(90): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#12 F:\libing\codingCat\cake\AdminLTE\webroot\index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-01-24 02:07:34 Error: [Cake\Controller\Exception\MissingActionException] Action UsersController::dist() could not be found, or is not accessible.
+Request URL: /users/dist/img/user2-160x160.jpg
+Referer URL: http://localhost:8765/users/profile
+Stack Trace:
+#0 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(121): Cake\Controller\Controller->invokeAction()
+#1 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(95): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#2 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#4 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(62): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#5 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(81): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Server.php(90): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#12 F:\libing\codingCat\cake\AdminLTE\webroot\index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-01-24 02:24:57 Error: [Cake\Controller\Exception\MissingActionException] Action UsersController::dist() could not be found, or is not accessible.
+Request URL: /users/dist/img/user2-160x160.jpg
+Referer URL: http://localhost:8765/users/profile
+Stack Trace:
+#0 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(121): Cake\Controller\Controller->invokeAction()
+#1 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(95): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#2 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#4 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(62): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#5 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(81): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Server.php(90): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#12 F:\libing\codingCat\cake\AdminLTE\webroot\index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
+2017-01-24 03:06:45 Error: [Cake\Routing\Exception\MissingControllerException] Controller class Dist could not be found.
+Request URL: /dist/img/user2-160x160.jpg
+Referer URL: http://localhost:8765/
+Stack Trace:
+#0 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ControllerFactory.php(72): Cake\Http\ControllerFactory->missingController(Object(Cake\Network\Request))
+#1 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(92): Cake\Http\ControllerFactory->create(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#2 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#4 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(62): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#5 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(93): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(81): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 F:\libing\codingCat\cake\AdminLTE\vendor\cakephp\cakephp\src\Http\Server.php(90): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#12 F:\libing\codingCat\cake\AdminLTE\webroot\index.php(37): Cake\Http\Server->run()
+#13 {main}
+
+
