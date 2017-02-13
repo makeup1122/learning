@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyWords</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div id="app" role="main" class="main-page">
+        <!--绑定question模型和回车事件-->
+        <div class="input-group">
+            <!--<span class="input-group-addon"></span>-->
+            <input type="text" class="form-control" name="word" v-model="question" v-on:keyup.enter="getAnswer" v-focus autofocus>
+        </div>
+
+        <!--纯html-->
+        <div class="answer" v-if="errorCode">
+            <p v-html="answer"></p>
+            <!-- 条件渲染-->
+            <p>
+                <span v-if="phonetic">注音：[{{phonetic}}]</span>
+                <template v-if="uk_phonetic">
+                    <span>英：[{{uk_phonetic}}]</span>
+                    <span>美：[{{us_phonetic}}]</span>
+                </template>
+            </p>
+            <div v-if="explains">
+                <div>
+                    <h3>基本词典：</h3>
+                    <ol>
+                        <li v-for="item in explains">
+                            {{item}}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div v-if="webs">
+                <h3>网络释义：</h3>
+                <ol>
+                    <li v-for="item in webs">
+                        {{item.key}}：{{item.value}}
+                    </li>
+                </ol>
+            </div>
+            <!--<button v-if="explains" onClick="saveToLibing()">记录</button>-->
+        </div>
+        <div v-else>
+            <p>估计没找到...</p>
+        </div>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script src="./js/jquery-3.1.1.min.js"></script>
+    <script src="./js/popup.js"></script>
+</body>
+</html>
