@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+	<div class="reg_main_left_six_two" id="vue-app">
+		<timer-btn ref="timerbtn" v-on:run="sendCode" v-bind:disabled="parentMsg" v-on:disabled="setDisabledVal"></timer-btn>
+		<!--<img src="index/images/ewm.png" style="width:98px; height:98px;"/>-->
+	</div>
+
+	<script>
+		//创建Vue组件
+		Vue.component('timerBtn', {
+			template: '<button v-on:click="run" :disabled="disabled || time > 0" >{{text}}</button>',
+			//父对象传值方法props
+			props: {
+				//验证
+				second: {
+					type: Number,
+					default: 5,
+				},
+				disabled: {
+					type: Boolean,
+					default: false
+				}
+			},
+			//data属性在component中必须是函数,否则会产生警告
+			data: function () {
+				return {
+					time: 0
+				}
+			},
+			methods: {
+				run: function () {
+					//触发事件：触发一个父组件感兴趣的事件
+					this.$emit('run');
+				},
+				start: function () {
+					this.time = this.second;
+					this.timer();
+				},
+				stop: function () {
+					this.time = 0;
+					this.disabled = false;
+				},
+				setDisabled: function (val) {
+					this.$emit("disabled");
+				},
+				timer: function () {
+					if (this.time > 0) {
+						this.time--;
+						setTimeout(this.timer, 1000);
+					} else {
+						this.setDisabled(false);
+					}
+				}
+			},
+			computed: {
+				text: function () {
+					return this.time > 0 ? this.time + 's 后重获取' : '获取验证码';
+				}
+			}
+		});
+		var vm = new Vue({
+			el: "#vue-app",
+			data: {
+				parentMsg: false,
+			},
+			methods: {
+				sendCode: function () {
+					//$refs 为子组件索引
+					// vm.$refs.timerbtn.setDisabled(true);
+					alert('start here!');
+					vm.parentMsg = true;
+					vm.$refs.timerbtn.start();
+				},
+				setDisabledVal: function () {
+					vm.parentMsg = !vm.parentMsg;
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>
