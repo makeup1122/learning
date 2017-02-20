@@ -1,0 +1,78 @@
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<article class="page-container">
+	<form class="form form-horizontal" id="form-member-edit">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>账户余额：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="number" style="width:120px;" class="input-text" value="{$member.amount}" placeholder="" id="site_name" name="amount" min="0.0" step="0.01">元
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>账户积分：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="number" style="width:120px;" min="0" class="input-text" v-model.number.trim="point" placeholder="" id="url" name="point">分
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"></label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="number" style="width:120px;" min="0" class="input-text"  v-model.number.trim="Electricity" placeholder="" id="url" >电量
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"></label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="number" style="width:120px;" min="0" class="input-text" v-model.number.trim="Energy" placeholder="" id="url" >能量
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>账户状态：</label>
+			<div class="formControls col-xs-8 col-sm-9"><span class="select-box">
+				<select class="select" size="1" name="state">
+					{volist name="status" id="st"}
+						<option value="{$key}" {eq name="$member.state" value="$key"}selected{/eq}>{$st}</option>
+                    {/volist}
+				</select>
+				</span>
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+				<input class="btn btn-primary radius" id="submit_add" type="button" value="提交">
+			</div>
+		</div>
+        <input type="hidden" value="{$member.id}" name="id">
+	</form>
+</article>
+<script>
+	var vm = new Vue({
+		el:"#form-member-edit",
+		data:{point:"{$member.point}"},
+		computed:{
+			Electricity:{
+				get:function(){
+					return Math.floor(parseInt(this.point)/3600);
+				},
+				set:function(newValue){
+					this.point = parseInt(this.Energy) + newValue*3600;
+				}
+			},
+			Energy:{
+				get:function(){
+					return parseInt(this.point)%3600;
+				},
+				set:function(newValue){
+					this.point = parseInt(this.Electricity)*3600 + newValue;
+				}
+			}
+		}
+		// methods:{
+		// 	getElectricity:function(data){
+		// 		return data == undefined ?Math.floor(parseInt(this.point)/3600): 10;
+		// 	},
+		// 	getEnergy:function(data){
+		// 		return data == undefined ?parseInt(this.point)%3600: 10;
+		// 	}
+		// }
+	});
+</script>
