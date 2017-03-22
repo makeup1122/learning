@@ -11,7 +11,7 @@
 <body>
     <div id="app">
         <ul>
-            <menu-item v-for="item in data" v-bind:model="item" v-bind:max_button="max_button" :key="item.id"></menu-item>
+            <menu-item v-for="item in data" v-bind:model="item"  :key="item.id"></menu-item>
         </ul>
         <button @click="update">更新</button>
     </div>
@@ -47,7 +47,7 @@
             <span v-else v-on:click="delItem" style="cursor:pointer;color:red">【X】</span>
         </div>
         <ul v-show="open" v-if="hasSubButton">
-            <menu-item v-for="sub_item in model.sub_button" :model="sub_item" v-bind:max_button="max_button + 2"> </menu-item>
+            <menu-item v-for="sub_item in model.sub_button" :model="sub_item" :key="sub_item.id"> </menu-item>
             <li v-on:click="addChildItem" style="width:30px;cursor:pointer">[+]</li>
         </ul>
 
@@ -61,7 +61,6 @@
         template: '#item-template',
         props: {
             model: [Object, Array],
-            max_button: Number
         },
         data: function () {
             return {
