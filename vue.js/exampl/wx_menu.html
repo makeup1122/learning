@@ -1,86 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>微信菜单</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script type="text/javascript" src="/static/admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="https://unpkg.com/jquery"></script>
 </head>
+
 <body>
     <div id="app">
         <ul>
-            <menu-item  v-for="item in data"  v-bind:model="item" v-bind:max_button="max_button"></menu-item>
+            <menu-item v-for="item in data" v-bind:model="item" v-bind:max_button="max_button" :key="item.id"></menu-item>
         </ul>
     </div>
-    {include file="Common/footer" /}
 </body>
 <script type="text/x-template" id="item-template">
-  <li v-if="!delState">
-    <div  @click="toggle">
-      <!--<input v-model="model.name">-->
-      {{model.name}}
-      <span v-if="hasSubButton" >[{{open ? '>' : '-'}}]</span>
-      <span v-else v-on:click="delItem">x</span>
-    </div>
-    <ul v-show="open" v-if="hasSubButton">
-      <menu-item v-for="sub_item in model.sub_button" :model="sub_item" v-bind:max_button="max_button + 2"> </menu-item>
-      <li v-on:click="addChildItem">[+]</li>
-    </ul>
-  </li>
+    <li v-if="!delState">
+        <!--<div  @click="toggle">-->
+        <div>
+            <input v-if="!show" v-model="model.name" v-on:blur="changeEdit" v-focus>
+            <span v-on:dblclick="changeEdit" v-show="show" style="cursor:pointer">{{model.name}}</span>
+            <!--菜单类型-->
+            <select v-if="!hasSubButton" v-model="model.type">
+                <option value="click">自定义点击事件</option>
+                <option value="view">网页跳转</option>
+                <option value="scancode_waitmsg">扫码推事件且弹出消息框</option>
+                <option value="scancode_push">扫码推事件</option>
+                <option value="pic_sysphoto">系统拍照发图</option>
+                <option value="pic_photo_or_album">拍照或者相册发图</option>
+                <option value="pic_weixin">微信相册发图</option>
+                <option value="location_select">弹出地理位置选择器/发送位置</option>
+                <option value="media_id">下发消息</option>
+                <option value="view_limited">跳转图文消息URL</option>
+            </select>
+            <!--菜单网页跳转事件URL-->
+            <span v-if="model.type == 'view'"><label for=''></label> <input type="text" v-model="model.url" placeholder="菜单网页跳转事件URL"></span>
+            <!--素材ID-->
+            <span v-else-if="model.type == 'media_id' || model.type== 'view_limited'"><label for=''></label> <input type="text" v-model="model.media_id" placeholder="永久素材id"></span>
+            <!--菜单自定义点击事件Key-->
+            <span v-else-if="model.type"><label for=''></label> <input type="text" v-model="model.key" placeholder="菜单自定义点击事件Key"></span>
+
+            <!--菜单操作-->
+            <span v-if="hasSubButton" @click="toggle" style="cursor:pointer">[{{open ? '>' : '-'}}]</span>
+            <span v-else v-on:click="delItem" style="cursor:pointer;color:red">【X】</span>
+        </div>
+        <ul v-show="open" v-if="hasSubButton">
+            <menu-item v-for="sub_item in model.sub_button" :model="sub_item" v-bind:max_button="max_button + 2"> </menu-item>
+            <li v-on:click="addChildItem" style="width:30px;cursor:pointer">[+]</li>
+        </ul>
+
+    </li>
 </script>
 <script>
+    const test = { "menu": { "button": [{ "name": "功能菜单", "sub_button": [{ "type": "view", "name": "政策资讯", "url": "http:\/\/www.zghdjn.com\/mobile\/news\/lists", "sub_button": [] }, { "type": "click", "name": "节能诊断", "key": "ZJN_B_ZHENDUAN", "sub_button": [] }, { "type": "view", "name": "有问必答", "url": "http:\/\/www.zghdjn.com\/wx\/user\/ask", "sub_button": [] }] }, { "name": "个人中心", "sub_button": [{ "type": "click", "name": "每日签到", "key": "ZJN_B_ZHENDUAN", "sub_button": [] }, { "type": "click", "name": "个人信息", "key": "ZJN_B_ZHENDUAN", "sub_button": [] }, { "type": "click", "name": "查看余额", "key": "ZJN_B_POINT", "sub_button": [] }, { "type": "click", "name": "我要兼职", "key": "ZJN_B_ZHENDUAN", "sub_button": [] }] }, { "name": "更多服务", "sub_button": [{ "type": "click", "name": "关于我们", "key": "ZJN_B_ABOUT", "sub_button": [] }, { "type": "view", "name": "全职招聘", "url": "http:\/\/mp.weixin.qq.com\/s?__biz=MzI1MjQ5ODQyNQ==&mid=100000017&idx=1&sn=166d1380a05c6d764c37e19e123847ab&chksm=69e399875e9410916e8dc2fdcb6dffff6d3421294ab7368430749a97f66661c7d8d347e0274a&scene=18#rd", "sub_button": [] }, { "type": "view", "name": "意见反馈", "url": "http:\/\/www.zghdjn.com\/mobile\/Index\/feedback", "sub_button": [] }] }] } };
+    const level_one = 3;
+    const level_two = 5;
+    Vue.component('menu-item', {
+        template: '#item-template',
+        props: {
+            model: [Object, Array],
+            max_button: Number
+        },
+        data: function () {
+            return {
+                open: true,
+                delState: false,
+                show: true
+            }
+        },
+        directives: {//自定义组件
+            focus: {//焦点事件
+                inserted: function (el) {
+                    el.focus();//插入元素时获取焦点
+                }
+            }
+        },
+        computed: {
+            hasSubButton: function () {
+                return this.model.sub_button && this.model.sub_button.length > 0 ? true : false;
+            },
+            noshow: function () {
+                return !this.show;
+            }
+        },
+        methods: {
+            changeEdit: function () {
+                this.show = !this.show;
+            },
+            toggle: function () {
+                if (this.hasSubButton) {
+                    this.open = !this.open;
+                }
+            },
+            addChildItem: function () {
+                this.model.sub_button.push({
+                    name: '新菜单'
+                })
+            },
+            delItem: function () {
+                this.delState = true;
+            }
+        }
+    });
     var vm = new Vue({
-        el:'#app',
-        data:{
-            data:[{name:'微信菜单',sub_button:''}],
-            max_button:3,
-            max_sub_button:5
+        el: '#app',
+        data: {
+            data: [{ name: '微信菜单', sub_button: '' }],
+            max_button: 3,
+            max_sub_button: 5
         },
         created: function () {
             // `this` 指向 vm 实例,切勿与ajax回调的this混淆
             var _self = this;
-            $.getJSON('/wx/Menu/get',function(data){
-                _self.data[0].sub_button = data.menu.button;
-                _self.$forceUpdate();//强制更新
-            });
+            // $.getJSON('/wx/Menu/get',function(data){
+            //     _self.data[0].sub_button = data.menu.button;
+            //     _self.$forceUpdate();//强制更新
+            // });
+            _self.data[0].sub_button = test.menu.button;
+            _self.$forceUpdate();//强制更新
         },
-        methods:{
-            update:function(){
+        methods: {
+            update: function () {
                 //更新菜单到微信服务器
             }
         }
     });
-    Vue.component('menu-item',{
-        template:'#item-template',
-        props:{
-            model:[Object,Array],
-            max_button:Number
-            },
-        data:function(){
-            return {open:true,delState:false}
-        },
-        computed:{
-            hasSubButton:function(){
-                return this.model.sub_button && this.model.sub_button.length >0?true:false;
-            }
-        },
-        methods:{
-            toggle:function(){
-                if(this.hasSubButton){
-                    this.open = !this.open;
-                }
-            },
-            addChildItem:function(){
-                this.model.sub_button.push({
-                    name:'新菜单'
-                })
-            },
-            delItem:function(){
-                this.delState=true;
-            }
-        }
-    })
+
 </script>
+
 </html>
 
 
@@ -129,7 +177,7 @@
 
 
 
-    <!--'index_url'=> 'http://www.zghdjn.com/static/',
+<!--'index_url'=> 'http://www.zghdjn.com/static/',
     'wx_token'=>'zghdjn',//接入验证用
     // 'wx_appid'=>'wx1001ce960aa3c400',//测试
     'wx_appid'=>'wxa92f0ac3c923610c',//正式
