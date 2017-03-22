@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信菜单</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="/static/admin/lib/jquery/1.9.1/jquery.min.js"></script> 
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <menu-item  v-for="item in data"  v-bind:model="item" v-bind:max_button="max_button"></menu-item>
+        </ul>
+    </div>
+    {include file="Common/footer" /}
+</body>
+<script type="text/x-template" id="item-template">
+  <li v-if="!delState">
+    <div  @click="toggle">
+      <!--<input v-model="model.name">-->
+      {{model.name}}
+      <span v-if="hasSubButton" >[{{open ? '>' : '-'}}]</span>
+      <span v-else v-on:click="delItem">x</span>
+    </div>
+    <ul v-show="open" v-if="hasSubButton">
+      <menu-item v-for="sub_item in model.sub_button" :model="sub_item" v-bind:max_button="max_button + 2"> </menu-item>
+      <li v-on:click="addChildItem">[+]</li>
+    </ul>
+  </li>
+</script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            data:[{name:'微信菜单',sub_button:''}],
+            max_button:3,
+            max_sub_button:5
+        },
+        created: function () {
+            // `this` 指向 vm 实例,切勿与ajax回调的this混淆
+            var _self = this;
+            $.getJSON('/wx/Menu/get',function(data){
+                _self.data[0].sub_button = data.menu.button;
+                _self.$forceUpdate();//强制更新
+            });
+        },
+        methods:{
+            update:function(){
+                //更新菜单到微信服务器
+            }
+        }
+    });
+    Vue.component('menu-item',{
+        template:'#item-template',
+        props:{
+            model:[Object,Array],
+            max_button:Number
+            },
+        data:function(){
+            return {open:true,delState:false}
+        },
+        computed:{
+            hasSubButton:function(){
+                return this.model.sub_button && this.model.sub_button.length >0?true:false;
+            }
+        },
+        methods:{
+            toggle:function(){
+                if(this.hasSubButton){
+                    this.open = !this.open;
+                }
+            },
+            addChildItem:function(){
+                this.model.sub_button.push({
+                    name:'新菜单'
+                })
+            },
+            delItem:function(){
+                this.delState=true;
+            }
+        }
+    })
+</script>
+</html>
