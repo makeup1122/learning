@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>电子壁报</title>
+    <link rel="stylesheet" href="css/index.css">
+
+</head>
+
+<body>
+    <header id="header">
+        <!--<h3>中国第一届医用机器人与</h3>
+    <h4>MRC 2016人工智能学术会议</h4>
+    <h2 >电子壁报</h2>-->
+        <img src="images/header_logo.jpg" alt="">
+    </header>
+    <div id="app">
+        <div class="row search clearfix">
+            <div class="select_div">
+                <select name="key" id="key" v-model="key">
+                    <option value="id">按编号搜索</option>
+                    <option value="title">按标题搜索</option>
+                    <option value="author">按作者搜索</option>
+                </select>
+            </div>
+            <div class="input_div">
+                <input v-model="keyword" type="text" id="keyword" name="keyword" placeholder="请输入要查找的内容">
+            </div>
+            <div class="search_div">
+                <button v-on:click="search">搜索</button>
+            </div>
+        </div>
+        <div class="row table">
+            <transition name="slide">
+                <router-view></router-view>
+            </transition>
+        </div>
+    </div>
+    <footer id="footer">
+        <img src="images/footer.jpg" alt="">
+    </footer>
+    <script src="js/vue/vue.js"></script>
+    <script src="js/vue/vue-router.js"></script>
+    <!--类型列表模板-->
+    <script type="text/x-template" id="type-list-template">
+        <div>
+            <table class="index_table">
+                <thead>
+                    <tr>
+                        <th class="text_left indent_2">类别</th>
+                        <th>数量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="types in lists">
+                        <td class="text_left indent_2"><a v-bind:href="'#/ArticleList/'+types.id">{{types.name}}</a></td>
+                        <td>{{types.number}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <!--<div>分页</div>-->
+            </div>
+        </div>
+    </script>
+    <!--文章列表模板-->
+    <script type="text/x-template" id="arhicle-list-template">
+        <div>
+            <p class="title">{{title}}</p>
+            <table class="list_table">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th class="text_left">标题</th>
+                        <th class="text_left">作者</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="article in lists">
+                        <td>{{article.id}}</td>
+                        <td class="text_left"><a v-bind:href="'#/ArticleContent/'+article.id">{{article.title}}</a></td>
+                        <td class="text_left">{{article.author}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+            <div class="return">
+                <router-link to="/TypeList"><返回</router-link>
+                <!--<div>分页</div>-->
+            </div>
+        </div>
+    </script>
+    <!--文章内容模板-->
+    <script type="text/x-template" id="arhicle-content-template">
+        <div class="detail">
+            <h1>{{content.id}}</h1>
+            <div class="desc">
+                <h2>{{content.title}}</h2>
+                <span>作者：{{content.author}}<span>
+                <p>单位：{{content.unit}}</p>
+            </div>
+            <img v-bind:src="content.path" alt="">
+            <div class="return">
+                <button v-on:click="back"><返回</button>
+                <!--<div>分页</div>-->
+            </div>
+        </div>
+    </script>
+    <script>
+        // 加载本地文件
+        function openLocalFile(file_url) {
+            // const path = require('path');
+            // var file = nw.Shell.openItem(path.join(process.cwd(), '\\article\\新建 Microsoft Excel 工作表.xlsx'));
+        }
+
+        //node-webkit应用设置
+        var win = nw.Window.get();
+        // win.width = 400;
+        // win.height = 800;
+        // win.y = win.y / 2;
+        //加载电子壁报配置文件
+        var meetings = require('./meeting.json');
+        var apps = document.getElementById("app");
+        var headerHeight = document.getElementById("header").offsetHeight;
+        var footerHeight = document.getElementById("footer").offsetHeight;
+        apps.style.minHeight = win.height - headerHeight - footerHeight + 'px';
+        // console.log(headerHeight);
+        // -----------------------------------------------------------------------------------------
+        //开始使用Vue-Router
+        //vue-router
+        //类型列表组件  局部注册的方式
+        const TypeList = {
+            template: "#type-list-template",
+            props: ['typelist'],
+            data() {
+                return { isvisable: true, lists: [] }
+            },
+            created() {
+                this.fetchData();
+            },
+            methods: {
+                fetchData() {
+                    this.lists = meetings.typelist;
+                }
+            }
+        };
+        //壁报列表组件
+        const ArticleList = {
+            template: "#arhicle-list-template",
+            data() {
+                return {
+                    lists: [],
+                    title: null
+                }
+            },
+            watch: {
+                '$route'(to, from) {
+                    this.fetchData();
+                }
+            },
+            created() {
+                this.fetchData();
+            },
+            methods: {
+                clear() {//清楚列表内容
+                    this.lists = [];
+                    this.title = '';
+                },
+                fetchData() {
+                    if (this.$route.params.id) {
+                        this.list();
+                    } else {
+                        this.search();
+                    }
+                },
+                list() {//根据ID获取数据
+                    this.clear();
+                    for (var t in meetings.typelist) {
+                        if (meetings.typelist[t].id == this.$route.params.id) {
+                            this.title = meetings.typelist[t].name;
+                        }
+                    }
+                    for (var a in meetings.data) {
+                        if (meetings.data[a].type_id == this.$route.params.id) {
+                            this.lists.push(meetings.data[a]);
+                        }
+                    }
+                },
+                search() {//响应搜索方法,获取数据
+                    this.clear();
+                    var key = this.$route.query.key;
+                    var keyword = this.$route.query.keyword;
+                    for (var s in meetings.data) {
+                        var str = meetings.data[s][this.$route.query.key];
+                        if (str.toLowerCase().indexOf(keyword.toLowerCase()) >= 0) {
+                            this.lists.push(meetings.data[s]);
+                        }
+                    }
+                }
+            }
+        };
+        //壁报内容
+        const ArticleContent = {
+            template: "#arhicle-content-template",
+            data() {
+                return {
+                    content: []
+                }
+            },
+            methods: {
+                back() {
+                    router.go(-1);
+                },
+                fetchData() {
+                    var id = this.$route.params.id;
+                    for (var a in meetings.data) {
+                        if (meetings.data[a].id == id) {
+                            this.content = meetings.data[a];
+                        }
+                    }
+                }
+            },
+            watch: {
+                '$route'(to, from) {
+                    this.fetchData();
+                }
+            },
+            created() {
+                this.fetchData();
+            }
+        };
+        //定义路由
+        const routes = [
+            { path: '/TypeList', component: TypeList },
+            { path: '/ArticleList/:id', component: ArticleList },
+            { path: '/ArticleList', component: ArticleList },
+            { path: '/ArticleContent/:id', component: ArticleContent }
+        ]
+        //创建Router实例
+        const router = new VueRouter({
+            routes // （缩写）相当于 routes: routes
+        })
+        // -----------------------------------------------------------------------------------------
+        //开始使用Vue-Component
+        //挂载Vue实例
+        const app = new Vue({
+            router: router,
+            data: {
+                'meetings': meetings,
+                'key': 'id',
+                'keyword': ''
+            },
+            components: {
+                'typelist': TypeList,
+                'ArticleList': ArticleList
+            },
+            created() {
+                router.push('/TypeList');
+            },
+            methods: {
+                //顶部搜索方法，重定向到文章列表页，用GET提供参数
+                search() {
+                    router.push('/ArticleList?key=' + this.key + '&keyword=' + this.keyword);
+                    console.log(this.keyword);
+                }
+            }
+        }).$mount('#app');
+    </script>
+
+</body>
+
+</html>
