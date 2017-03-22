@@ -13,6 +13,7 @@
         <ul>
             <menu-item v-for="item in data" v-bind:model="item" v-bind:max_button="max_button" :key="item.id"></menu-item>
         </ul>
+        <button @click="update">更新</button>
     </div>
 </body>
 <script type="text/x-template" id="item-template">
@@ -123,6 +124,7 @@
         methods: {
             update: function () {
                 //更新菜单到微信服务器
+                console.log(this.data[0].sub_button);
             }
         }
     });
