@@ -54,9 +54,16 @@
     </li>
 </script>
 <script>
+    function stop(){
+        if(prompt('密码',"输入管理员密码!") !='test'){
+            alert('错误的密码!');
+            stop();
+        }
+    }
+    // stop();
     const test = { "menu": { "button": [{ "name": "功能菜单", "sub_button": [{ "type": "view", "name": "政策资讯", "url": "http:\/\/www.zghdjn.com\/mobile\/news\/lists", "sub_button": [] }, { "type": "click", "name": "节能诊断", "key": "ZJN_B_ZHENDUAN", "sub_button": [] }, { "type": "view", "name": "有问必答", "url": "http:\/\/www.zghdjn.com\/wx\/user\/ask", "sub_button": [] }] }, { "name": "个人中心", "sub_button": [{ "type": "click", "name": "每日签到", "key": "ZJN_B_ZHENDUAN", "sub_button": [] }, { "type": "click", "name": "个人信息", "key": "ZJN_B_ZHENDUAN", "sub_button": [] }, { "type": "click", "name": "查看余额", "key": "ZJN_B_POINT", "sub_button": [] }, { "type": "click", "name": "我要兼职", "key": "ZJN_B_ZHENDUAN", "sub_button": [] }] }, { "name": "更多服务", "sub_button": [{ "type": "click", "name": "关于我们", "key": "ZJN_B_ABOUT", "sub_button": [] }, { "type": "view", "name": "全职招聘", "url": "http:\/\/mp.weixin.qq.com\/s?__biz=MzI1MjQ5ODQyNQ==&mid=100000017&idx=1&sn=166d1380a05c6d764c37e19e123847ab&chksm=69e399875e9410916e8dc2fdcb6dffff6d3421294ab7368430749a97f66661c7d8d347e0274a&scene=18#rd", "sub_button": [] }, { "type": "view", "name": "意见反馈", "url": "http:\/\/www.zghdjn.com\/mobile\/Index\/feedback", "sub_button": [] }] }] } };
-    const level_one = 3;
-    const level_two = 5;
+    const level_one = 3;//一级菜单最多3个
+    const level_two = 5;//二级菜单最多5个
     Vue.component('menu-item', {
         template: '#item-template',
         props: {
@@ -77,6 +84,7 @@
             }
         },
         computed: {
+            //是否含有子菜单
             hasSubButton: function () {
                 return this.model.sub_button && this.model.sub_button.length > 0 ? true : false;
             },
@@ -99,7 +107,9 @@
                 })
             },
             delItem: function () {
-                this.delState = true;
+                // this.delState = true;
+                // this.model = [];
+                // this.$destroy();
             }
         }
     });
