@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            
+            box-sizing: border-box;
+            /*content-box：
+            padding和border不被包含在定义的width和height之内。对象的实际宽度等于设置的width值和border、padding之和，即 ( Element width = width + border + padding )
+            此属性表现为标准模式下的盒模型。
+            border-box：
+            padding和border被包含在定义的width和height之内。对象的实际宽度就等于设置的width值，即使定义有border和padding也不会改变对象的实际宽度，即 ( Element width = width )
+            此属性表现为怪异模式下的盒模型。*/
+        }
+        
+        ul {
+            list-style-image: none;
+            /*none：
+            不指定图像，默认内容标记将被 <' list-style-type '> 代替。*/
+            list-style-type: none
+        }
+        
+        .lists {
+            overflow: hidden;
+            font-size: 16px;
+        }
+        
+        .lists li {
+            float: left;
+            width: 280px;
+            height: 314px;
+            position: relative;
+            margin-bottom: 70px;
+            margin-right: 24px;
+        }
+        
+        .lists li img {
+            display: block;
+            width: 100%;
+            height: 314px;
+        }
+        
+        .lists li section {
+            position: absolute;
+            transition: bottom 0.2s;
+            opacity: 0;
+            width: 280px;
+            top: 0;
+            bottom: 0;
+            padding: 30px;
+            color: #fff;
+            line-height: 25px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .lists li strong {
+            display: block;
+            bottom: 0;
+            left: 0;
+            height: 60px;
+            width: 100%;
+            background: grey;
+            color: white;
+            text-align: center;
+            line-height: 60px;
+            font-weight: normal;
+            font-size: 22px;
+            position: absolute;
+            transition: all 0.5s;
+        }
+        
+        .lists li a:hover strong {
+            bottom: -60px;
+            background: #962626;
+        }
+        
+        .lists li a:hover section {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="lists">
+        <li>
+            <a>
+                <img src="http://wx1.sinaimg.cn/mw600/6cca1403ly1feudxjf6ahj20gi0h1ab3.jpg">
+                <section>test</section>
+                <strong>sss</strong>
+            </a>
+        </li>
+        <li>
+            <a>
+                <img src="http://wx1.sinaimg.cn/mw600/6cca1403ly1feudxjf6ahj20gi0h1ab3.jpg">
+                <section>test</section>
+                <strong>sss</strong>
+            </a>
+        </li>
+        <li>
+            <a>
+                <img src="http://wx1.sinaimg.cn/mw600/6cca1403ly1feudxjf6ahj20gi0h1ab3.jpg">
+                <section>test</section>
+                <strong>sss</strong>
+            </a>
+        </li>
+    </ul>
+</body>
+
+</html>
