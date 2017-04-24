@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./base.css">
+    <title>轮播</title>
+    <style>
+        .flow {width:800px; height:200px;border:1px solid black;}
+        .flow img { border:2px solid black;width:400px;height:200px;}
+        .flow ul {position: relative;}
+        .flow ul li {position: absolute;}
+        .flow ul li {margin-left:20%}
+        .flow ul li:first-child{margin-left:25%}
+        .flow ul li:last-child{margin-left:30%}
+        .flow ul li.on {z-index:9999}
+    </style>
+</head>
+<body>
+    <div class="flow">
+        <ul>
+            <li class="on">
+                <img src="./images/1.jpg" alt="">
+            </li>
+            <li>
+                <img src="./images/2.jpg" alt="">
+            </li>
+            <li>
+                <img src="./images/3.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    
+</script>
+</html>
