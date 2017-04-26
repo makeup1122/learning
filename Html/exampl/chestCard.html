@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/localstorage.js"></script>
+    <style>
+        div.card {
+            border: 3px solid black;
+            width: 300px;
+            height: 450px;
+            position:absolute;
+        }
+        div.card .barcode {
+            margin: 2px;
+            position:absolute;
+            bottom:100px;
+            left:30%;
+            width:100px;
+        }
+        div.card .userinfo{
+            width:inherit;
+            height:inherit;
+        }
+        div.card .userinfo div {
+            display:inline;
+            position:absolute;
+            text-align: center;
+            font-size: 20px;
+            margin:0 auto; 
+            width:inherit;
+            height:inherit;
+        }
+        div.card .userinfo span {
+            font-size: 26px;
+        }
+        /*姓名*/
+        div.card .userinfo .name {
+            top:10%;
+        }
+        /*English Name*/
+        div.card .userinfo .english-name{
+            top:20%;
+        }
+        /*addr*/
+        div.card .userinfo .addr{
+            top:30%;
+        }
+        div.card .position {
+            position:absolute;
+            font-size: 30px;
+            top:400px;
+            left:30%;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="card" ondrop="drop(event)" ondragover="dragover(event)">
+        <div class="userinfo">
+            <div class="name"         id="name"        draggable="true" ondragstart="drag(event)"><span>学习</span></div>
+            <div class="english-name" id="englishname" draggable="true" ondragstart="drag(event)"><span>LiBing</span></div>
+            <div class="addr"         id="addr"        draggable="true" ondragstart="drag(event)"><span>北京市海淀区</span></div>
+        </div>
+        <img src="./images/qr.jpg" alt="" class="barcode" id="barcode" draggable="true" ondragstart="drag(event)">
+        <div class="position" id="position" draggable="true" ondragstart="drag(event)">
+            <span>哈哈哈</span>
+        </div>
+    </div>
+</body>
+<script>
+    //开始拖拽
+    function drag(ev)
+    {
+        ev.target.style.border = "2px dashed #558ABB";
+        ev.dataTransfer.setData("id",ev.target.id);
+        ev.dataTransfer.setData("clientX",ev.clientX);
+        ev.dataTransfer.setData("clientY",ev.clientY);
+    }
+    //进行放置
+    function drop(ev)
+    {
+        ev.preventDefault();
+        console.log(ev);
+        
+        var id=ev.dataTransfer.getData("id");
+        var dragclientX = ev.dataTransfer.getData("clientX");
+        var dragclientY = ev.dataTransfer.getData("clientY");
+        var ele = document.getElementById(id);
+        var left = parseInt(ele.offsetLeft) + (parseInt(ev.clientX) - parseInt(dragclientX));
+        var top = parseInt(ele.offsetTop) + (parseInt(ev.clientY) - parseInt(dragclientY));
+        ele.style.top = top +"px";
+        ele.style.left = left +"px";
+        ele.style.border = "";
+    }
+    //拖拽进行时
+    function dragover(ev)
+    {
+        ev.preventDefault();
+    }
+    function checkLocalStorage(){
+
+    }
+</script>
+
+</html>
