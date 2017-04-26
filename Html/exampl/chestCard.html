@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./js/localstorage.js"></script>
+    
+    <title>Document</title>
+</head>
+
+<body>
+    <!--startprint-->
     <style>
         div.card {
             border: 3px solid black;
@@ -31,7 +37,6 @@
             font-size: 20px;
             margin:0 auto; 
             width:inherit;
-            height:inherit;
         }
         div.card .userinfo span {
             font-size: 26px;
@@ -55,11 +60,7 @@
             left:30%;
         }
     </style>
-    <title>Document</title>
-</head>
-
-<body>
-    <div class="card" ondrop="drop(event)" ondragover="dragover(event)">
+    <div id="chestcard" class="card" ondrop="drop(event)" ondragover="dragover(event)">
         <div class="userinfo">
             <div class="name"         id="name"        draggable="true" ondragstart="drag(event)"><span>学习</span></div>
             <div class="english-name" id="englishname" draggable="true" ondragstart="drag(event)"><span>LiBing</span></div>
@@ -70,8 +71,22 @@
             <span>哈哈哈</span>
         </div>
     </div>
+    <!--endprint-->
+    <button onclick="javascript:myprint()" style="margin-top:500px;">Print</button>
 </body>
 <script>
+    function myprint(){
+        bdhtml=window.document.body.innerHTML;    
+        sprnstr="<!--startprint-->";    
+        eprnstr="<!--endprint-->";    
+        prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+17);    
+        prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));    
+        var newWindow=window.open("dd","_blank");
+        newWindow.document.write(prnhtml);
+        newWindow.document.close();
+        newWindow.print();
+        newWindow.close();
+    }
     //开始拖拽
     function drag(ev)
     {
