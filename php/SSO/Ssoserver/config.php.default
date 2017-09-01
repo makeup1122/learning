@@ -1,0 +1,5 @@
+<?php 
+return [
+    'SSO_SERVER_URL'=>'http://47.92.71.11:8084',
+    'SSO_SERVER_OPEN'=>true
+];
